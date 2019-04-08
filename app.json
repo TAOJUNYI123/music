@@ -1,9 +1,11 @@
 {
     "pages": [
         "pages/login/login/login",
+        "pages/login/register/Register",
         "pages/index/index",
         "pages/logs/logs"
     ],
+    
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#199ABA",
