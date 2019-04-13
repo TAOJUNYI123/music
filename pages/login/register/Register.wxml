@@ -1,0 +1,20 @@
+<!--pages/login/register/Register.wxml-->
+<van-notify id="van-notify" />
+<view class='page' style='height:{{height}}px'>
+    <image class='backgroundImg' src='../../../img/005.jpg'></image>
+    <view class='registerBox'>
+        <view class='name'>
+            <image src='../../../img/register.png'></image>
+            <input placeholder='账号' bindinput='name'></input>
+        </view>
+        <view class='pwd'>
+            <image src='../../../img/pwd.png'></image>
+            <input placeholder='设置密码，至少6位' password bindinput="pwd"></input>
+        </view>
+        <view class='surePwd'>
+            <image src='../../../img/surePwd.png'></image>
+            <input placeholder='确认密码' password bindinput='surePwd'></input>
+        </view>
+        <van-button round custom-class="registerBtn" type="primary" loading='{{loading}}' bind:click='register'>注册</van-button>
+    </view>
+</view>

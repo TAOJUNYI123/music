@@ -1,0 +1,44 @@
+<!--pages/home/home/home.wxml-->
+<van-tabs swipeable active="{{ active }}" sticky>
+    <van-icon slot="nav-left" name="wap-nav" custom-class="left-nav" bind:click="msg" />
+    <van-icon slot="nav-right" name="search" custom-class="right-nav" bind:click="search" />
+    <!-- 我的 -->
+    <van-tab title="我的">
+        我的
+    </van-tab>
+    <!-- 发现 -->
+    <van-tab title="发现">
+        <swiper indicator-dots autoplay="{{true}}" circular>
+            <block wx:for="{{banners}}" wx:key="{{index}}">
+                <swiper-item>
+                    <image src="{{item.picUrl?item.picUrl:'../../../img/banner1.png'}}" class='banner' />
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class='menuBox'>
+            <view class='menu'>
+                <image src='../../../img/recommend.png'></image>
+                <text>推荐</text>
+            </view>
+            <view class='menu'>
+                <image src='../../../img/hot.png'></image>
+                <text>热搜</text>
+            </view>
+            <view class='menu'>
+                <image src='../../../img/ranking.png'></image>
+                <text>排行榜</text>
+            </view>
+            <view class='menu'>
+                <image src='../../../img/radio.png'></image>
+                <text>电台</text>
+            </view>
+            <view class='menu'>
+                <image src='../../../img/music.png'></image>
+                <text>新歌</text>
+            </view>
+        </view>
+        
+    </van-tab>
+    <!-- 视频 -->
+    <van-tab title="视频">内容 3</van-tab>
+</van-tabs>

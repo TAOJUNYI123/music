@@ -1,0 +1,20 @@
+<!--pages/login/login/login.wxml-->
+<van-notify id="van-notify" />
+<view class='page' style='height:{{height}}px'>
+    <image class='backgroundImg' src='../../../img/005.jpg'></image>
+    <view class='loginBox'>
+        <view class='accountNum'>
+            <image src='../../../img/name.png'></image>
+            <input bindinput="accountNum" placeholder='账号'></input>
+        </view>
+        <view class='pwd'>
+            <image src='../../../img/pwd.png'></image>
+            <input bindinput='pwd' placeholder='密码' password></input>
+        </view>
+        <van-button round custom-class="loginBtn" type="primary" disabled="{{!canLogin}}" loading="{{loading}}" bind:click='login'>登录</van-button>
+        <view class='tip'>
+            <text>还没有账号？</text>
+            <text class='register' bindtap='goRegister'>立即注册</text>
+        </view>
+    </view>
+</view>
