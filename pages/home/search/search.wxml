@@ -1,5 +1,14 @@
 <!--pages/home/search/search.wxml-->
-<van-search custom-class='searchBox'  value="{{value}}" placeholder="请输入搜索关键词" bind:change="onChange" />
-<van-cell-group custom-class="list">
-    <van-cell title="单元格" value="内容" is-link/>
+<van-search value="{{ keywords }}" placeholder="请输入搜索关键词" bind:change="onChange" bind:search="{{search}}" />
+<van-cell-group custom-class="list" wx:if="{{keywords}}">
+    <van-cell wx:for="{{songs}}" wx:key="{{index}}" title="{{item.name}}" is-link  url="/pages/home/searchDetail/searchDetail?name={{item.name}}"/>
 </van-cell-group>
+<view wx:else class='hotBox'>
+    <view class='hotTitle'>
+        <image src='../../../img/hot.png'></image>
+        <text>热门搜索</text>
+    </view>
+    <view class='content'>
+        <text wx:for="{{hots}}" wx:key="{{index}}">{{item.first}}</text>
+    </view>
+</view>

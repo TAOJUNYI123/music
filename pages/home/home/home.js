@@ -6,7 +6,7 @@ Page({
      */
     data: {
         active: 1,
-        banners:[]
+        banners: [{ imageUrl: '../../../img/banner1.png' }, { imageUrl:'../../../img/banner2.png'}]
     },
     // 搜索
     search(){
@@ -18,19 +18,24 @@ Page({
     msg(){
         console.log("msg")
     },
-    
+    // 排行榜
+    goRanking(){
+        wx.navigateTo({
+            url: '../ranking/ranking'
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         const that = this;
         wx.request({
-            url: 'http://musicapi.leanapp.cn/banner',
+            url: 'http://localhost:3000/banner',
             header: {
                 'content-type': 'application/json' // 默认值
             },
             success(res) {
-                // console.log(res)
+                // console.log(res.data.banners)
                 that.setData({
                     banners: res.data.banners
                 })

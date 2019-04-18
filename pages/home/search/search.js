@@ -1,3 +1,4 @@
+import Toast from '../../../dist/toast/toast';
 // pages/home/search/search.js
 Page({
 
@@ -5,18 +6,69 @@ Page({
      * 页面的初始数据
      */
     data: {
-        value:''
+        keywords: '',
+        songs:[],
+        hots:[]
     },
-    // 改變搜索內容
-    onChange(e){
-        console.log(e.detail);
+    // 改变搜索內容
+    onChange(e) {
+        this.setData({
+            keywords:e.detail
+        });
+        if (this.data.keywords){
+            this.getList()
+        }
     },
-    // 
+    // 搜索
+    search(e){
+        console.log(e)
+    },
+    // 获取列表
+    getList() {
+        const that = this;
+        wx.request({
+            url: 'http://localhost:3000/search',
+            data: {
+                keywords: that.data.keywords,
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            success(res) {
+                // console.log(res.data.result);
+                if (res.data.result.songCount!=0){
+                    that.setData({
+                        songs: res.data.result.songs
+                    })
+                }
+            },
+            complete() {
+               
+            }
+        })
+    },
+    // 热搜
+    getHot(){
+        const that = this;
+        wx.request({
+            url: 'http://localhost:3000/search/hot',
+            header: {
+                'content-type': 'application/json'
+            },
+            success(res) {
+                // console.log(res.data.result.hots);
+                that.setData({
+                    hots: res.data.result.hots
+                })
+            }
+        })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        this.getHot();
     },
 
     /**

@@ -11,7 +11,7 @@
         <swiper indicator-dots autoplay="{{true}}" circular>
             <block wx:for="{{banners}}" wx:key="{{index}}">
                 <swiper-item>
-                    <image src="{{item.picUrl?item.picUrl:'../../../img/banner1.png'}}" class='banner' />
+                    <image src="{{item.imageUrl}}" class='banner' />
                 </swiper-item>
             </block>
         </swiper>
@@ -21,10 +21,10 @@
                 <text>推荐</text>
             </view>
             <view class='menu'>
-                <image src='../../../img/hot.png'></image>
-                <text>热搜</text>
+                <image src='../../../img/singer.png'></image>
+                <text>歌手分类</text>
             </view>
-            <view class='menu'>
+            <view class='menu' bindtap='goRanking'>
                 <image src='../../../img/ranking.png'></image>
                 <text>排行榜</text>
             </view>
@@ -37,7 +37,7 @@
                 <text>新歌</text>
             </view>
         </view>
-        
+
     </van-tab>
     <!-- 视频 -->
     <van-tab title="视频">内容 3</van-tab>
