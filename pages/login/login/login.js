@@ -62,7 +62,7 @@ Page({
                 'content-type': 'application/json'
             },
             success(res) {
-                // console.log(res.data);
+                console.log(res.data);
                 if (!res.data.data) {
                     Notify(res.data.msg);
                 }else{
@@ -70,7 +70,7 @@ Page({
                         title: '登录成功',
                         icon: 'success',
                     })
-                    wx.navigateTo({
+                    wx.reLaunch({
                         url: '../../home/home/home',
                     })
                 }

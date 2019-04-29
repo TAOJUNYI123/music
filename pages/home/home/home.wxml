@@ -1,11 +1,23 @@
 <!--pages/home/home/home.wxml-->
-<van-tabs swipeable active="{{ active }}" sticky>
+<van-dialog id="van-dialog" />
+<van-tabs swipeable active="{{ active }}" sticky bind:change="onChange">
     <van-icon slot="nav-left" name="wap-nav" custom-class="left-nav" bind:click="msg" />
     <van-icon slot="nav-right" name="search" custom-class="right-nav" bind:click="search" />
     <!-- 我的 -->
     <van-tab title="我的">
-        我的
+        <view class='meImgBox'>
+            <image src='{{avatarUrl}}'></image>
+            <text>{{nickName}}</text>
+        </view>
+        <van-cell-group>
+            <van-cell title="性别" value="内容" />
+            <van-cell title="所在省份" value="内容"/>
+            <van-cell title="所在城市" value="内容"/>
+        </van-cell-group>
     </van-tab>
+    <van-popup show="{{ show }}" custom-class="meSure">
+
+    </van-popup>
     <!-- 发现 -->
     <van-tab title="发现">
         <swiper indicator-dots autoplay="{{true}}" circular>
@@ -34,10 +46,22 @@
             </view>
             <view class='menu'>
                 <image src='../../../img/music.png'></image>
-                <text>新歌</text>
+                <text>歌单</text>
             </view>
         </view>
-
+        <view class='newBox'>新碟上架</view>
+        <view class='newAlbum'>
+            <view class='new' wx:for="{{albums}}" wx:key="{{index}}">
+                <image src='{{item.blurPicUrl}}'></image>
+                <text class='name'>{{item.name}}</text>
+                <text class='artist'>{{item.artist.name}}</text>
+            </view>
+        </view>
+        <view class='exclusive'>独家放送</view>
+        <view class='exclusiveBox' wx:for="{{exclusive}}" wx:key="{{index}}">
+            <image src='{{item.picUrl}}'></image>
+            <view class='name'>{{item.name}}</view>
+        </view>
     </van-tab>
     <!-- 视频 -->
     <van-tab title="视频">内容 3</van-tab>

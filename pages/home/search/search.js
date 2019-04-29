@@ -27,7 +27,7 @@ Page({
     getList() {
         const that = this;
         wx.request({
-            url: 'http://localhost:3000/search',
+            url: 'http://192.168.43.54:3000/search',
             data: {
                 keywords: that.data.keywords,
             },
@@ -51,7 +51,7 @@ Page({
     getHot(){
         const that = this;
         wx.request({
-            url: 'http://localhost:3000/search/hot',
+            url: 'http://192.168.43.54:3000/search/hot',
             header: {
                 'content-type': 'application/json'
             },
