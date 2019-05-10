@@ -5,6 +5,7 @@
     "van-icon": "../../../dist/icon/index",
     "van-cell": "../../../dist/cell/index",
     "van-cell-group": "../../../dist/cell-group/index",
-    "van-popup": "../../../dist/popup/index"
+    "van-popup": "../../../dist/popup/index",
+    "van-button": "../../../dist/button/index"
   }
 }

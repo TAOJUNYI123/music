@@ -39,6 +39,12 @@ Page({
             this.newMv();
         }
     },
+    // 退出登录
+    backBtn(){
+        wx.reLaunch({
+            url: '../../login/login/login'
+        })
+    },
     // 最新mv
     newMv(){
         const that = this;
@@ -115,11 +121,14 @@ Page({
         const that = this;
         wx.request({
             url: 'http://192.168.43.54:3000/top/mv',
+            data:{
+                limit:10
+            },
             header: {
                 'content-type': 'application/json' // 默认值
             },
             success(res) {
-                console.log(res.data.data)
+                // console.log(res.data.data)
                 that.setData({
                     rankingMv: res.data.data
                 })
@@ -147,7 +156,7 @@ Page({
     },
     // 个人信息
     msg() {
-        console.log("msg")
+        console.log("msg");
     },
     // 排行榜
     goRanking() {

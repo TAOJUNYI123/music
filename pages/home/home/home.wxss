@@ -91,6 +91,11 @@
 
 .new .name {
     margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .new .artist {
@@ -122,43 +127,56 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 /* 我的 */
-.meImgBox{
+
+.meImgBox {
     width: 100%;
     height: 200rpx;
     display: flex;
     align-items: center;
-    background-color: #EDECE8;
+    background-color: #edece8;
 }
-.meImgBox image{
+
+.meImgBox image {
     width: 140rpx;
     height: 140rpx;
     margin-left: 15px;
     margin-right: 15px;
     border-radius: 100rpx;
 }
-.meImgBox text{
+
+.meImgBox text {
     font-size: 16px;
     font-weight: bold;
 }
-.meSure{
+
+.meSure {
     width: 240px;
     height: 140px;
     border-radius: 10px;
 }
-.meBtnBox{
+
+.meBtnBox {
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
-.meTip{
+
+.meTip {
     width: 100%;
     height: 100px;
     line-height: 100px;
     text-align: center;
 }
+.backBtn{
+    position: fixed!important;
+    bottom: 0;
+    width: 100%;
+}
 /* 视频 */
-.newMvBox{
+
+.newMvBox {
     width: 100%;
     height: 170px;
     display: flex;
@@ -168,31 +186,92 @@
     /* background-color: yellowgreen; */
     position: relative;
 }
-.newMvBox image{
+
+.newMvBox image {
     width: 80%;
     height: 120px;
     margin-top: 10px;
     border-radius: 10px;
 }
-.newMvBox .play{
+
+.newMvBox .play {
     position: absolute;
     left: 45px;
     bottom: 60px;
 }
-.playCount{
+
+.playCount {
     color: white;
     position: absolute;
     left: 62px;
     bottom: 56px;
 }
-.newMvBox .briefDesc{
+
+.newMvBox .briefDesc {
     display: flex;
     align-items: center;
     width: 80%;
     height: 40px;
     margin-top: 5px;
-    padding:5px;
+    padding: 5px;
     /* background-color: yellow; */
-    border-bottom: 1px solid #EDECE8;
+    border-bottom: 1px solid #edece8;
 }
 
+.rankingBox {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #edece8;
+}
+
+.rankingBox .head {
+    width: 100%;
+    height: 44px;
+    display: flex;
+}
+
+.rankingBox .name, .rankingBox .artistName {
+    height: 44px;
+    line-height: 44px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rankingBox .name {
+    width: 65%;
+}
+
+.rankingBox .artistName {
+    width: 35%;
+}
+
+.rankingBox .ranking {
+    margin-left: 10px;
+    margin-right: 2px;
+    color: #dc2f27;
+    font-weight: bold;
+}
+
+.rankingBox .artistName {
+    line-height: 44px;
+    text-align: center;
+    color: #a8a8a8;
+}
+
+.rankingBox image {
+    width: 90%;
+    height: 105px;
+    border-radius: 10px;
+}
+
+.briefDesc {
+    width: 90%;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

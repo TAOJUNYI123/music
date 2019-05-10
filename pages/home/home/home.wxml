@@ -1,5 +1,6 @@
 <!--pages/home/home/home.wxml-->
 <van-dialog id="van-dialog" />
+
 <van-tabs swipeable active="{{ active }}" sticky bind:change="onChange" line-width='0'>
     <van-icon slot="nav-left" name="wap-nav" custom-class="left-nav" bind:click="msg" />
     <van-icon slot="nav-right" name="search" custom-class="right-nav" bind:click="search" />
@@ -15,6 +16,7 @@
             <van-cell title="所在城市" value="{{city?city:'-'}}" />
             <van-cell title="当前账号" value="{{phone?phone:'-'}}" />
         </van-cell-group>
+        <van-button type="danger" custom-class='backBtn'bind:click='backBtn'>退出登录</van-button>
     </van-tab>
     <van-popup show="{{ show }}" custom-class="meSure">
         <view class='meTip'>通过微信授权才能查看个人信息哦~</view>
@@ -90,10 +92,17 @@
                 </view>
             </van-tab>
             <van-tab title="排行">
-                <van-cell-group>
-                    <van-cell title="单元格" value="内容" />
-                    <van-cell title="单元格" value="内容" />
-                </van-cell-group>
+                <view class='rankingBox' style="height:{{item.briefDesc?'185px':'165px'}}" wx:for="{{rankingMv}}" wx:key="{{index}}">
+                    <view class='head'>
+                        <view class='name'>
+                            <text class='ranking'>{{index+1}}.</text>
+                            <text>{{item.name}}</text>
+                        </view>
+                        <view class='artistName'>{{item.artistName}}</view>
+                    </view>
+                    <image src='{{item.cover}}'></image>
+                    <view class='briefDesc' wx:if='{{item.briefDesc}}'>{{item.briefDesc}}</view>
+                </view>
             </van-tab>
         </van-tabs>
     </van-tab>
