@@ -1,6 +1,6 @@
 <!--pages/login/login/login.wxml-->
 <van-notify id="van-notify" />
-<view class='page' style='height:{{height}}px'>
+<view class='page'  style='height:{{height}}px'>
     <image class='backgroundImg' src='../../../img/005.jpg'></image>
     <view class='loginBox'>
         <view class='accountNum'>

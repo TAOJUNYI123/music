@@ -20,9 +20,9 @@
     color: #242424 !important;
 }
 
-.van-tabs__line {
+/* .van-tabs__line {
     height: 0 !important;
-}
+} */
 
 /* 发现 */
 
@@ -128,7 +128,7 @@
     height: 200rpx;
     display: flex;
     align-items: center;
-    background-color: yellowgreen;
+    background-color: #EDECE8;
 }
 .meImgBox image{
     width: 140rpx;
@@ -140,10 +140,59 @@
 .meImgBox text{
     font-size: 16px;
     font-weight: bold;
-    color: #199ABA;
 }
 .meSure{
     width: 240px;
     height: 140px;
     border-radius: 10px;
 }
+.meBtnBox{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.meTip{
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+/* 视频 */
+.newMvBox{
+    width: 100%;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellowgreen; */
+    position: relative;
+}
+.newMvBox image{
+    width: 80%;
+    height: 120px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.newMvBox .play{
+    position: absolute;
+    left: 45px;
+    bottom: 60px;
+}
+.playCount{
+    color: white;
+    position: absolute;
+    left: 62px;
+    bottom: 56px;
+}
+.newMvBox .briefDesc{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 40px;
+    margin-top: 5px;
+    padding:5px;
+    /* background-color: yellow; */
+    border-bottom: 1px solid #EDECE8;
+}
+

@@ -29,7 +29,18 @@ Page({
             })
         }
     },
-
+    onLoad: function (options) {
+        console.log(options)
+        this.setData({
+            name: options.name,
+            img1v1Url: options.img1v1Url
+        })
+    },
+    onShow: function () {
+        wx.setNavigationBarTitle({
+            title: this.data.name
+        })
+    },
     //输入密码
     pwd(e) {
         this.setData({
@@ -62,10 +73,11 @@ Page({
                 'content-type': 'application/json'
             },
             success(res) {
-                console.log(res.data);
+                // console.log(res.data);
                 if (!res.data.data) {
                     Notify(res.data.msg);
                 }else{
+                    wx.setStorageSync('phone', res.data.data.phone)
                     wx.showToast({
                         title: '登录成功',
                         icon: 'success',
@@ -115,19 +127,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        // wx.request({
-        //     url: 'http://localhost:port/login/findPassWord', 
-        //     data: {
-        //         phone: '17853500997',
-        //         y: ''
-        //     },
-        //     header: {
-        //         'content-type': 'application/json' // 默认值
-        //     },
-        //     success(res) {
-        //         console.log(res.data)
-        //     }
-        // })
+        
     },
 
     /**

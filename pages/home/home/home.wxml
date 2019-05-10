@@ -1,6 +1,6 @@
 <!--pages/home/home/home.wxml-->
 <van-dialog id="van-dialog" />
-<van-tabs swipeable active="{{ active }}" sticky bind:change="onChange">
+<van-tabs swipeable active="{{ active }}" sticky bind:change="onChange" line-width='0'>
     <van-icon slot="nav-left" name="wap-nav" custom-class="left-nav" bind:click="msg" />
     <van-icon slot="nav-right" name="search" custom-class="right-nav" bind:click="search" />
     <!-- 我的 -->
@@ -10,13 +10,20 @@
             <text>{{nickName}}</text>
         </view>
         <van-cell-group>
-            <van-cell title="性别" value="内容" />
-            <van-cell title="所在省份" value="内容"/>
-            <van-cell title="所在城市" value="内容"/>
+            <van-cell title="性别" value="{{gender==0?'女':gender==1?'男':'-'}}" />
+            <van-cell title="所在省份" value="{{province?province:'-'}}" />
+            <van-cell title="所在城市" value="{{city?city:'-'}}" />
+            <van-cell title="当前账号" value="{{phone?phone:'-'}}" />
         </van-cell-group>
     </van-tab>
     <van-popup show="{{ show }}" custom-class="meSure">
-
+        <view class='meTip'>通过微信授权才能查看个人信息哦~</view>
+        <view class='meBtnBox'>
+            <button size='mini' bindtap='meCancel'>取消</button>
+            <button size='mini' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" bindtap='meSure'>
+                确定
+            </button>
+        </view>
     </van-popup>
     <!-- 发现 -->
     <van-tab title="发现">
@@ -64,5 +71,30 @@
         </view>
     </van-tab>
     <!-- 视频 -->
-    <van-tab title="视频">内容 3</van-tab>
+    <van-tab title="视频">
+        <van-tabs active="{{ mvActive }}" bind:change="mvChange" sticky="{{true}}">
+            <van-tab title="最新">
+                <view class='newMvBox' wx:for="{{newMv}}" wx:key='{{index}}'>
+                    <image src='{{item.cover}}'></image>
+                    <van-icon name="play" color='white' custom-class='play' />
+                    <text class='playCount'>{{playCount[index]}}</text>
+                    <view class='briefDesc'>{{item.briefDesc}}</view>
+                </view>
+            </van-tab>
+            <van-tab title="推荐">
+                <view class='newMvBox' wx:for="{{recommendMv}}" wx:key='{{index}}'>
+                    <image src='{{item.picUrl}}'></image>
+                    <van-icon name="play" color='white' custom-class='play' />
+                    <text class='playCount'>{{playTime[index]}}</text>
+                    <view class='briefDesc'>{{item.copywriter}}</view>
+                </view>
+            </van-tab>
+            <van-tab title="排行">
+                <van-cell-group>
+                    <van-cell title="单元格" value="内容" />
+                    <van-cell title="单元格" value="内容" />
+                </van-cell-group>
+            </van-tab>
+        </van-tabs>
+    </van-tab>
 </van-tabs>

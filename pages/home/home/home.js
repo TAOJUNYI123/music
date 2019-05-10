@@ -13,14 +13,130 @@ Page({
         }],
         albums: [],
         exclusive: [],
-        show:false
+        show:false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        avatarUrl:'../../../img/touxiang.png',
+        nickName:'未命名',
+        gender:undefined,
+        province:'',
+        city:'',
+        phone:'',
+        mvActive:0,
+        newMv:[],
+        playCount:[],
+        recommendMv:[],
+        playTime:[],
+        rankingMv:[]
     },
     // 改变标签页
     onChange(event) {
-        if (event.detail.index==0){
+        if (event.detail.index == 0 && !this.data.canIUse){
             this.setData({
                 show:true
             })
+        }
+        if (event.detail.index == 2){
+            this.newMv();
+        }
+    },
+    // 最新mv
+    newMv(){
+        const that = this;
+        wx.request({
+            url: 'http://192.168.43.54:3000/mv/first',
+            data: {
+                limit: 10
+            },
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+                // console.log(res.data.data)
+                that.setData({
+                    newMv: res.data.data
+                })
+                that.getPlayCount()
+            }
+        })
+    },
+    // 推荐mv
+    recommendMv(){
+        const that = this;
+        wx.request({
+            url: 'http://192.168.43.54:3000/personalized/mv',
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+                // console.log(res.data.result)
+                that.setData({
+                    recommendMv: res.data.result
+                })
+                that.getPlayTime()
+            }
+        })
+    },
+    // 最新mv播放次数
+    getPlayCount() {
+        const newMv = this.data.newMv;
+        for (var i = 0; i < newMv.length; i++) {
+            if (newMv[i].playCount >= 100000) {
+                var playCount = Math.round(newMv[i].playCount / 10000);
+                playCount = playCount + "万";
+                this.setData({
+                    playCount: this.data.playCount.concat(playCount)
+                })
+            } else {
+                this.setData({
+                    playCount: this.data.playCount.concat(newMv[i].playCount)
+                })
+            }
+        }
+    },
+    // 推荐mv播放次数
+    getPlayTime(){
+        const recommendMv = this.data.recommendMv;
+        for (var i = 0; i < recommendMv.length; i++) {
+            if (recommendMv[i].playCount >= 100000) {
+                var playTime = Math.round(recommendMv[i].playCount / 10000);
+                playTime = playTime + "万";
+                this.setData({
+                    playTime: this.data.playTime.concat(playTime)
+                })
+            } else {
+                this.setData({
+                    playTime: this.data.playTime.concat(recommendMv[i].playCount)
+                })
+            }
+        }
+    },
+    // mv排行
+    rankingMv(){
+        const that = this;
+        wx.request({
+            url: 'http://192.168.43.54:3000/top/mv',
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+                console.log(res.data.data)
+                that.setData({
+                    rankingMv: res.data.data
+                })
+            }
+        })
+    },
+    // 视频标签页
+    mvChange(event) {
+        console.log(event.detail.index)
+        if (event.detail.index ==0){
+            this.newMv()
+        }
+        if (event.detail.index==1){
+            this.recommendMv()
+        }
+        if (event.detail.index == 2){
+            this.rankingMv()
         }
     },
     // 搜索
@@ -73,7 +189,30 @@ Page({
             }
         })
     },
-
+    // 获取用户信息
+    bindGetUserInfo(e) {
+        console.log(e.detail.userInfo)
+        this.setData({
+            avatarUrl: e.detail.userInfo.avatarUrl,
+            nickName: e.detail.userInfo.nickName,
+            gender: e.detail.userInfo.gender,
+            province: e.detail.userInfo.province,
+            city: e.detail.userInfo.city
+        })
+    },
+    //取消获取个人信息
+    meCancel(){
+        this.setData({
+            active:1,
+            show:false
+        })
+    },
+    // 确定获取个人信息
+    meSure(){
+        this.setData({
+            show:false
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -93,8 +232,32 @@ Page({
         })
         this.newAlbum();
         this.exclusive();
+        // 查看是否授权
+        wx.getSetting({
+            success(res) {
+                if (res.authSetting['scope.userInfo']) {
+                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                    wx.getUserInfo({
+                        success(res) {
+                            // console.log(res.userInfo)
+                            that.setData({
+                                nickName: res.userInfo.nickName,
+                                avatarUrl: res.userInfo.avatarUrl,
+                                gender: res.userInfo.gender,
+                                province: res.userInfo.province,
+                                city: res.userInfo.city
+                            })
+                        }
+                    })
+                }
+            }
+        })
+        const phone = wx.getStorageSync('phone')
+        this.setData({
+            phone:phone
+        })
     },
-
+    
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

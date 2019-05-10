@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/login/register/Register",
     "pages/home/home/home",
     "pages/login/login/login",
+    "pages/home/song/song",
     "pages/home/search/search",
     "pages/home/searchDetail/searchDetail",
     "pages/home/ranking/ranking",
-    "pages/login/register/Register",
     "pages/index/index",
     "pages/logs/logs"
   ],

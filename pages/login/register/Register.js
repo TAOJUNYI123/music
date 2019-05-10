@@ -33,6 +33,8 @@ Page({
     // 注册
     register() {
         const that = this;
+        var reg = /^[0-9A-Za-z]{6,12}$/;
+        
         if (!this.data.name) {
             Notify('账号不能为空');
         } else if (!this.data.pwd) {
@@ -41,8 +43,8 @@ Page({
             Notify('请确认密码');
         } else if (this.data.pwd != this.data.surePwd) {
             Notify('设置密码和确认密码不同，请检查')
-        } else if (this.data.pwd.length < 6) {
-            Notify('密码至少设置6位')
+        } else if (!reg.test(this.data.pwd) || this.data.pwd.length < 6 || this.data.pwd.length > 12) {
+            Notify('密码应为6-12位数字或字母组成')
         } else {
             that.setData({
                 loading: true
