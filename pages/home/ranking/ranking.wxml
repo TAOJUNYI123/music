@@ -1,0 +1,8 @@
+<!--pages/home/ranking/ranking.wxml-->
+<block wx:for="{{rankArr}}">
+    <view class='titleBox'>
+        <view class='left'></view>
+        <text class='right'>{{item.name}}</text>
+    </view>
+    <view class='contentBox'></view>
+</block>

@@ -1,0 +1,45 @@
+<!--pages/home/searchDetail/searchDetail.wxml-->
+<van-tabs bind:change="onChange" sticky="{{true}}" swipeable>
+    <van-tab title="单曲">
+        <van-cell-group>
+            <van-cell wx:for="{{songs}}" wx:key="{{index}}" title="{{item.name}}" label="{{item.artists[0].name}}-{{item.album.name}}" data-name='{{item.name}}' data-img='{{item.artists[0].img1v1Url}}' data-id='{{item.id}}' bind:click='goSong'>
+                <van-icon slot="right-icon" name="play-circle-o" class="van-cell__right-icon" />
+            </van-cell>
+        </van-cell-group>
+    </van-tab>
+    <van-tab title="专辑">
+        <view class='albums' wx:for="{{albums}}" wx:key="{{index}}">
+            <image src='{{item.picUrl?item.picUrl:item.blurPicUrl}}'></image>
+            <view class='right'>
+                <text>{{item.name}}</text>
+                <text class='msg'>{{item.artist.name}} {{publishTime[index]}}</text>
+            </view>
+        </view>
+    </van-tab>
+    <van-tab title="歌手">
+        <view class='singer' wx:for="{{artists}}" wx:key="{{index}}">
+            <image src='{{item.picUrl}}'></image>
+            <text>{{item.name}}</text>
+        </view>
+    </van-tab>
+    <van-tab title="电台">
+        <view class='radios' wx:for="{{djRadios}}" wx:key="{{index}}">
+            <image src='{{item.picUrl}}'></image>
+            <view class='right'>
+                <text>{{item.name}}</text>
+                <text class='msg'>{{item.dj.nickname}}</text>
+            </view>
+        </view>
+    </van-tab>
+    <van-tab title="视频">
+        <view class='videos' wx:for="{{videos}}" wx:key="{{index}}">
+            <image src='{{item.coverUrl}}'></image>
+            <van-icon custom-class="play" name="play" color="white" />
+            <text class='playTime'>{{playTime[index]}}</text>
+            <view class='right'>
+                <text>{{item.title}}</text>
+                <text class='msg'>{{durationms[index]}} by {{item.creator[0].userName}}</text>
+            </view>
+        </view>
+    </van-tab>
+</van-tabs>

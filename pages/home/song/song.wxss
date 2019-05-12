@@ -1,0 +1,45 @@
+/* pages/home/song/song.wxss */
+.page{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.slider{
+    width: 80%;
+    margin-left: 10px;
+}
+.songBox{
+    width: 230px;
+    height: 230px;
+    border-radius: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #525163;
+}
+.songBox image{
+    width: 190px;
+    height: 190px;
+    border-radius: 190px;
+}
+.startImg,.stopImg{
+    margin-top: 30px;
+    width: 50px;
+    height: 50px;
+}
+.footer{
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    position: relative;
+    /* background-color: salmon; */
+}
+.time{
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    color: #A8A8A8;
+}
