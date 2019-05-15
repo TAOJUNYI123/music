@@ -37,23 +37,23 @@
             </block>
         </swiper>
         <view class='menuBox'>
-            <view class='menu'>
+            <view class='menu' bindtap='recommend'>
                 <image src='../../../img/recommend.png'></image>
                 <text>推荐</text>
             </view>
-            <view class='menu'>
+            <view class='menu' bindtap='goSinger'>
                 <image src='../../../img/singer.png'></image>
-                <text>歌手分类</text>
+                <text>歌手</text>
             </view>
             <view class='menu' bindtap='goRanking'>
                 <image src='../../../img/ranking.png'></image>
                 <text>排行榜</text>
             </view>
-            <view class='menu'>
+            <view class='menu' bindtap='radio'>
                 <image src='../../../img/radio.png'></image>
                 <text>电台</text>
             </view>
-            <view class='menu'>
+            <view class='menu' bindtap='songList'>
                 <image src='../../../img/music.png'></image>
                 <text>歌单</text>
             </view>

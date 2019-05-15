@@ -25,3 +25,14 @@
 .contentBox:last-child{
     margin-bottom: 15px;
 }
+.ranking{
+    color: #D62C25;
+    font-weight: bold;
+}
+.item{
+    padding-top: 8px;
+    margin-left: 5px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}

@@ -39,6 +39,30 @@ Page({
             this.newMv();
         }
     },
+    // 跳转到歌单页面
+    songList(){
+        wx.navigateTo({
+            url: '../songList/songList',
+        })
+    },
+    // 跳转到歌手页面
+    goSinger(){
+        wx.navigateTo({
+            url: '../singer/singer',
+        })
+    },
+    // 跳转到推荐页面
+    recommend(){
+        wx.navigateTo({
+            url: '../recommend/recommend',
+        })
+    },
+    // 跳转到电台
+    radio(){
+        wx.navigateTo({
+            url: '../radio/radio',
+        })
+    },
     // 退出登录
     backBtn(){
         wx.reLaunch({

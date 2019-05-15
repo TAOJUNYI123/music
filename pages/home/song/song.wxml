@@ -5,7 +5,7 @@
     </view> 
 </view>
 <view class='footer'>
-    <van-slider value="{{value}}" custom-class='slider' bind:change="onChange"/>
+    <van-slider value="{{value}}" custom-class='slider' disabled bind:change="onChange"/>
     <text class='time'>{{currentTime}}</text>
 <image wx:if="{{!start}}" class='startImg' src='../../../img/start.png' bindtap='start'></image>
     <image wx:else class='stopImg' src='../../../img/stop.png' bindtap='stop'></image>

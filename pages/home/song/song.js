@@ -1,7 +1,6 @@
 // pages/home/song/song.js
 const innerAudioContext = wx.createInnerAudioContext()
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -21,23 +20,37 @@ Page({
         wx.request({
             url: 'http://192.168.43.54:3000/song/url',
             data: {
-                id: this.data.id
+                id: that.data.id
             },
             header: {
                 'content-type': 'application/json'
             },
             success(res) {
-                // console.log(res.data);
+                console.log(res.data.data[0].url);
                 that.setData({
                     url: res.data.data[0].url
                 })
                 innerAudioContext.src = that.data.url;
+                if (res.data.data[0].url==null) {
+                    wx.showModal({
+                        title: '温馨提示',
+                        content: '抱歉，没有获取到相应音频哦~',
+                        showCancel: false,
+                        success(res) {
+                            if (res.confirm) {
+                                wx.navigateBack({
+                                    delta: 1
+                                })
+                            }
+                        }
+                    })
+                }
             }
         })
     },
     // 开始播放
     start() {
-        // innerAudioContext.src = this.data.url;
+        innerAudioContext.src = this.data.url;
         const that = this;
         innerAudioContext.play();
         innerAudioContext.onPlay(() => {
@@ -53,8 +66,17 @@ Page({
                     value: 100 * currentTime / innerAudioContext.duration
                 })
                 that.changeTimeBySecond(currentTime)
+                console.log(that.data.value)
+                if (that.data.value == 99.7) {
+                    this.setData({
+                        value: 0,
+                        currentTime: '00:00',
+                        start: false
+                    })
+                }
             })
         }, 1000)
+        
     },
     // 总时长转换
     changeTimeBySecond(second) {
@@ -95,7 +117,7 @@ Page({
     },
     // 暂停播放
     stop() {
-        // innerAudioContext.src = this.data.url;
+        innerAudioContext.src = this.data.url;
         innerAudioContext.pause();
         const that = this;
         innerAudioContext.onPause(() => {
@@ -114,9 +136,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        console.log(options.id)
         this.setData({
             name: options.name,
-            img: decodeURIComponent(options.img),
+            img: options.img ? decodeURIComponent(options.img) :'../../../img/playMusic.png',
             id: options.id
         })
         const that = this;
@@ -127,7 +150,8 @@ Page({
                 })
             }
         })
-        this.songUrl()
+        this.songUrl();
+        
     },
 
     /**
@@ -144,6 +168,7 @@ Page({
         wx.setNavigationBarTitle({
             title: this.data.name
         })
+        
     },
 
     /**
