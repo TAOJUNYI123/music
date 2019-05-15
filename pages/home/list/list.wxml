@@ -1,0 +1,13 @@
+<!--pages/home/list/list.wxml-->
+<view class='headBox'>
+    <image src='{{coverImgUrl}}'></image>
+    <view class='right'>
+        <view class='name'>{{name}}</view>
+        <view class='description'>{{description}}</view>
+    </view>
+</view>
+<van-cell-group>
+    <van-cell wx:for='{{tracks}}' wx:key="{{index}}" title="{{item.name}}" label='{{item.ar[0].name}}' data-id='{{item.id}}' data-name='{{item.name}}' data-img='{{item.al.picUrl}}' bind:click='goSong'>
+        <van-icon slot="right-icon" name="play-circle-o" />
+    </van-cell>
+</van-cell-group>

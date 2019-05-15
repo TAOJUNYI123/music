@@ -1,0 +1,8 @@
+<!--pages/home/radio/radio.wxml-->
+<view class='radioBox' wx:for='{{djRadios}}' wx:key='{{index}}' id='{{item.id}}'   data-name='{{item.name}}' bindtap='radioDetail'>
+    <image src='{{item.picUrl}}'></image>
+    <view class='name'>
+        <text class='category'>{{item.category}}</text>
+        <text>{{item.name}}</text>
+    </view>
+</view>

@@ -1,0 +1,5 @@
+<!--pages/home/songList/songList.wxml-->
+<view class='itemBox' wx:for='{{songList}}' wx:key="{{index}}" data-name='{{item.name}}' id='{{item.id}}' bindtap='goList'>
+    <image src='{{item.coverImgUrl}}'></image>
+    <view class='name'>{{item.name}}</view>
+</view>

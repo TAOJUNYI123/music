@@ -1,0 +1,27 @@
+<!--pages/home/singer/singer.wxml-->
+<van-tabs active="{{ active }}" sticky bind:change="onChange">
+    <van-tab title="华语（男）">
+        <view class='listBox' wx:for='{{chineseMen}}' wx:key='{{index}}'>
+            <image src='{{item.img1v1Url}}'></image>
+            <text>{{item.name}}</text>
+        </view>
+    </van-tab>
+    <van-tab title="华语（女）">
+        <view class='listBox' wx:for='{{chineseWomen}}' wx:key='{{index}}'>
+            <image src='{{item.img1v1Url}}'></image>
+            <text>{{item.name}}</text>
+        </view>
+    </van-tab>
+    <van-tab title="欧美（男）">
+        <view class='listBox' wx:for='{{westernMen}}' wx:key='{{index}}'>
+            <image src='{{item.img1v1Url}}'></image>
+            <text>{{item.name}}</text>
+        </view>
+    </van-tab>
+    <van-tab title="欧美（女）">
+        <view class='listBox' wx:for='{{westernWomen}}' wx:key='{{index}}'>
+            <image src='{{item.img1v1Url}}'></image>
+            <text>{{item.name}}</text>
+        </view>
+    </van-tab>
+</van-tabs>

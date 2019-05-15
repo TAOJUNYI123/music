@@ -1,0 +1,9 @@
+<!--pages/home/radioDetail/radioDetail.wxml-->
+<view class='name'>{{name}}</view>
+<view class='itemBox' wx:for="{{programs}}" wx:key="{{index}}" id="{{item.id}}" data-name="{{item.name}}"  data-img="{{item.blurCoverUrl}}" bindtap='goSong'>
+    <image src='{{item.blurCoverUrl}}'></image>
+    <view class='right'>
+        <view class='title'>{{item.name}}</view>
+        <view class='description'>{{item.description}}</view>
+    </view>
+</view>
