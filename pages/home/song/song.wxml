@@ -1,5 +1,10 @@
 <!--pages/home/song/song.wxml-->
+
 <view class='page' style='height:{{height-150}}px'>
+    <text bindtap='showText'>歌词</text>
+    <van-popup show="{{ show }}" custom-class='songText' bind:close="onClose">
+        <view wx:for="{{lyric}}" wx:key="{{index}}">{{item}}</view>
+    </van-popup>
     <view class='songBox'>
         <image src='{{img}}'></image>
     </view> 

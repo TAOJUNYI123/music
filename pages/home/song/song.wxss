@@ -7,6 +7,12 @@
     justify-content: center;
     position: relative;
 }
+.page text{
+    color: #199ABA;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
 .slider{
     width: 80%;
     margin-left: 10px;
@@ -24,6 +30,18 @@
     width: 190px;
     height: 190px;
     border-radius: 190px;
+}
+.songText{
+    width: 80%;
+    height: 460px;
+    border-radius: 5px;
+    text-align: center;
+}
+.songText::-webkit-scrollbar {
+    display: none;
+  }
+.songText view{
+    margin: 10px auto;
 }
 .startImg,.stopImg{
     margin-top: 30px;

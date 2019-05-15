@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/login/login/login",
     "pages/home/home/home",
     "pages/home/radio/radio",
     "pages/home/radioDetail/radioDetail",
-    "pages/login/login/login",
     "pages/home/recommend/recommend",
     "pages/home/singer/singer",
     "pages/home/songList/songList",

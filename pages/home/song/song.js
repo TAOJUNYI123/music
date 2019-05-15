@@ -12,7 +12,9 @@ Page({
         id: '',
         url: '',
         currentTime:'00:00',
-        value:0
+        value:0,
+        show:false,
+        lyric:''
     },
     // 获取音乐url
     songUrl() {
@@ -26,9 +28,9 @@ Page({
                 'content-type': 'application/json'
             },
             success(res) {
-                console.log(res.data.data[0].url);
+                // console.log(res.data.data[0].url);
                 that.setData({
-                    url: res.data.data[0].url
+                    url: res.data.data[0].url?res.data.data[0].url:''
                 })
                 innerAudioContext.src = that.data.url;
                 if (res.data.data[0].url==null) {
@@ -66,7 +68,6 @@ Page({
                     value: 100 * currentTime / innerAudioContext.duration
                 })
                 that.changeTimeBySecond(currentTime)
-                console.log(that.data.value)
                 if (that.data.value == 99.7) {
                     this.setData({
                         value: 0,
@@ -76,7 +77,6 @@ Page({
                 }
             })
         }, 1000)
-        
     },
     // 总时长转换
     changeTimeBySecond(second) {
@@ -131,7 +131,48 @@ Page({
     onChange(event) {
         console.log(event.detail)
     },
-
+    // 歌词
+    songText(){
+        const that = this;
+        wx.request({
+            url: 'http://192.168.43.54:3000/lyric',
+            data: {
+                id: that.data.id
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            success(res) {
+                // console.log(res.data.lrc.lyric);
+                var str = res.data.lrc ? res.data.lrc.lyric:'[00:00.00]暂无歌词';
+                str = str.replace(/\]\[/g, '] [');
+                var arr = str.match(/(\[\d{2}:\d{2}\.\d{2,3}\])(.[^\[\]]*)?/g);
+                var time = [], txt = [];
+                for (var i = 0; i < arr.length; i++) {
+                    /^(\[\d{2}:\d{2}\.\d{2,3}\])(.[^\[\]]*)?$/.exec(arr[i]);
+                    time.push(RegExp.$1);
+                    txt.push(RegExp.$2);
+                }
+                // console.log(arr);
+                // console.log(time);
+                // console.log(txt);
+                that.setData({
+                    lyric: txt
+                })
+            }
+        })
+    },
+    // 显示歌词
+    showText(){
+        this.setData({
+            show:true
+        })
+    },
+    onClose(){
+        this.setData({
+            show: false
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -168,7 +209,7 @@ Page({
         wx.setNavigationBarTitle({
             title: this.data.name
         })
-        
+        this.songText()
     },
 
     /**

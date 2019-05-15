@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-      "van-slider": "../../../dist/slider/index"
+      "van-slider": "../../../dist/slider/index",
+      "van-popup": "../../../dist/popup/index"
   }
 }
