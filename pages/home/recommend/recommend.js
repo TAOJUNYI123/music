@@ -25,15 +25,15 @@ Page({
     },
     // 跳转到播放音乐页面
     goSong(e) {
-        // console.log(e.target.dataset.img)
-        console.log(e.target.dataset.name)
+        // console.log(e)
+        // console.log(e.target.dataset.name)
         console.log(e.target.dataset.id)
         this.setData({
             img: e.target.dataset.img,
             name: e.target.dataset.name
         })
         wx.navigateTo({
-            url: '../song/song?name=' +  e.target.dataset.name + '&id=' + e.target.dataset.id,
+            url: '../song/song?name=' + e.target.dataset.name + '&id=' + e.target.dataset.id + '&img=' + encodeURIComponent(e.target.dataset.img)
         })
     },
     /**

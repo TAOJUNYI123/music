@@ -22,7 +22,7 @@
         <view class='meTip'>通过微信授权才能查看个人信息哦~</view>
         <view class='meBtnBox'>
             <button size='mini' bindtap='meCancel'>取消</button>
-            <button size='mini' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" bindtap='meSure'>
+            <button size='mini'  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" bindtap='meSure'>
                 确定
             </button>
         </view>

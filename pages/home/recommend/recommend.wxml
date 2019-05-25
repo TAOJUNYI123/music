@@ -1,6 +1,6 @@
 <!--pages/home/recommend/recommend.wxml-->
 <van-cell-group>
-    <van-cell wx:for="{{recommendMusic}}" wx:key="{{index}}" title="{{item.name}}" data-name='{{item.name}}' data-id='{{item.id}}' bind:click='goSong'>
+    <van-cell wx:for="{{recommendMusic}}" wx:key="{{index}}" title="{{item.name}}" data-name='{{item.name}}' data-id='{{item.id}}' data-img='{{item.song.album.blurPicUrl}}'  bind:click='goSong'>
         <van-icon slot="right-icon" name="play-circle-o" />
     </van-cell>
 </van-cell-group>

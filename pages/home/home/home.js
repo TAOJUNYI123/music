@@ -30,9 +30,11 @@ Page({
     },
     // 改变标签页
     onChange(event) {
-        if (event.detail.index == 0 && !this.data.canIUse){
+        // console.log(this.data.canIUse)
+        if (event.detail.index == 0 && this.data.canIUse){
             this.setData({
-                show:true
+                show:true,
+                canIUse:false
             })
         }
         if (event.detail.index == 2){

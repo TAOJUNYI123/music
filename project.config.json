@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.4",
+	"libVersion": "2.7.0",
 	"appid": "wx6b69ec810e4f395c",
 	"projectname": "music",
 	"debugOptions": {

@@ -32,7 +32,7 @@
     border-radius: 190px;
 }
 .songText{
-    width: 80%;
+    width: 85%;
     height: 460px;
     border-radius: 5px;
     text-align: center;

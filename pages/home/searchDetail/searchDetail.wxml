@@ -37,7 +37,7 @@
             <van-icon custom-class="play" name="play" color="white" />
             <text class='playTime'>{{playTime[index]}}</text>
             <view class='right'>
-                <text>{{item.title}}</text>
+                <text class='title'>{{item.title}}</text>
                 <text class='msg'>{{durationms[index]}} by {{item.creator[0].userName}}</text>
             </view>
         </view>

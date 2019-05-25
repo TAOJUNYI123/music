@@ -129,7 +129,7 @@ Page({
     },
     // 进度条改变
     onChange(event) {
-        console.log(event.detail)
+        // console.log(event.detail)
     },
     // 歌词
     songText(){
