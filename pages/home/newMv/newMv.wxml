@@ -1,0 +1,2 @@
+<!--pages/home/newMv/newMv.wxml-->
+<video src="{{url}}" style='width:100%'></video>

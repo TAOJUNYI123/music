@@ -76,7 +76,7 @@
     <van-tab title="视频">
         <van-tabs active="{{ mvActive }}" bind:change="mvChange" sticky="{{true}}">
             <van-tab title="最新">
-                <view class='newMvBox' wx:for="{{newMv}}" wx:key='{{index}}'>
+                <view class='newMvBox' wx:for="{{newMv}}" wx:key='{{index}}' bindtap='newMvBox' id='{{item.id}}' data-name='{{item.name}}'>
                     <image src='{{item.cover}}'></image>
                     <van-icon name="play" color='white' custom-class='play' />
                     <text class='playCount'>{{playCount[index]}}</text>
@@ -84,7 +84,7 @@
                 </view>
             </van-tab>
             <van-tab title="推荐">
-                <view class='newMvBox' wx:for="{{recommendMv}}" wx:key='{{index}}'>
+                <view class='newMvBox' wx:for="{{recommendMv}}" wx:key='{{index}}'bindtap='newMvBox' id='{{item.id}}' data-name='{{item.name}}'>
                     <image src='{{item.picUrl}}'></image>
                     <van-icon name="play" color='white' custom-class='play' />
                     <text class='playCount'>{{playTime[index]}}</text>
@@ -92,7 +92,7 @@
                 </view>
             </van-tab>
             <van-tab title="排行">
-                <view class='rankingBox' style="height:{{item.briefDesc?'185px':'165px'}}" wx:for="{{rankingMv}}" wx:key="{{index}}">
+                <view class='rankingBox' style="height:{{item.briefDesc?'185px':'165px'}}" wx:for="{{rankingMv}}" wx:key="{{index}}" bindtap='newMvBox' id='{{item.id}}' data-name='{{item.name}}'>
                     <view class='head'>
                         <view class='name'>
                             <text class='ranking'>{{index+1}}.</text>

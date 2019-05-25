@@ -91,6 +91,13 @@ Page({
             }
         })
     },
+    // 跳转到最新视频详情页
+    newMvBox(e){
+        // console.log(e.currentTarget.dataset.name)
+        wx.navigateTo({
+            url: '../newMv/newMv?id=' + e.currentTarget.id + '&name=' + e.currentTarget.dataset.name
+        })
+    },
     // 推荐mv
     recommendMv(){
         const that = this;
