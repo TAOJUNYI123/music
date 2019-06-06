@@ -12,6 +12,9 @@ Page({
     // 电台节目
     program(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/dj/program',
             data: {
@@ -26,6 +29,7 @@ Page({
                 that.setData({
                     programs: res.data.programs
                 })
+                wx.hideLoading()
             }
         })
     },

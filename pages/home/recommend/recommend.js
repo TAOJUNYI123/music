@@ -10,6 +10,9 @@ Page({
     // 推荐新音乐
     recommendMusic(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/personalized/newsong',
             header: {
@@ -20,6 +23,9 @@ Page({
                 that.setData({
                     recommendMusic: res.data.result
                 })
+            },
+            complete() {
+                wx.hideLoading()
             }
         })
     },

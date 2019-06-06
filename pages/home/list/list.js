@@ -14,6 +14,9 @@ Page({
     // 获取歌单详情
     getDetail(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/playlist/detail',
             data:{
@@ -29,6 +32,7 @@ Page({
                     description: res.data.playlist.description,
                     tracks: res.data.playlist.tracks
                 })
+                wx.hideLoading()
             }
         })
     },

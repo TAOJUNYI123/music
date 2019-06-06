@@ -1,18 +1,19 @@
 {
   "pages": [
-    "pages/home/home/home",
-    "pages/home/newMv/newMv",
     "pages/login/login/login",
+    "pages/home/home/home",
+    "pages/home/searchDetail/searchDetail",
+    "pages/home/singer/singer",
+    "pages/home/video/video",
+    "pages/home/newMv/newMv",
     "pages/home/radio/radio",
     "pages/home/radioDetail/radioDetail",
     "pages/home/recommend/recommend",
-    "pages/home/singer/singer",
     "pages/home/songList/songList",
     "pages/home/list/list",
     "pages/home/search/search",
     "pages/login/register/Register",
     "pages/home/song/song",
-    "pages/home/searchDetail/searchDetail",
     "pages/home/ranking/ranking",
     "pages/index/index",
     "pages/logs/logs"

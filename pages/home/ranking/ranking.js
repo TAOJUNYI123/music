@@ -13,6 +13,9 @@ Page({
      */
     onLoad: function(options) {
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'https://api.apiopen.top/musicRankings',
             header: {
@@ -25,7 +28,7 @@ Page({
                 })
             },
             complete() {
-            
+                wx.hideLoading()
             }
         })
     },

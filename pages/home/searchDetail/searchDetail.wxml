@@ -32,7 +32,7 @@
         </view>
     </van-tab>
     <van-tab title="视频">
-        <view class='videos' wx:for="{{videos}}" wx:key="{{index}}">
+        <view class='videos' wx:for="{{videos}}" wx:key="{{index}}" bindtap='newMv' id='{{item.vid}}' data-name='{{item.title}}'>
             <image src='{{item.coverUrl}}'></image>
             <van-icon custom-class="play" name="play" color="white" />
             <text class='playTime'>{{playTime[index]}}</text>

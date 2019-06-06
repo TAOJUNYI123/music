@@ -9,6 +9,9 @@ Page({
     },
     getList(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/top/playlist?limit=6',
             header: {
@@ -19,6 +22,7 @@ Page({
                 that.setData({
                     songList: res.data.playlists
                 })
+                wx.hideLoading()
             }
         })
     },

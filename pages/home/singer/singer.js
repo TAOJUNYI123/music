@@ -30,6 +30,9 @@ Page({
     // 华语男歌手
     chineseMen(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/artist/list',
             data: {
@@ -43,12 +46,18 @@ Page({
                 that.setData({
                     chineseMen: res.data.artists
                 })
+            },
+            complete() {
+                wx.hideLoading()
             }
         })
     },
     // 华语女歌手
     chineseWomen(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/artist/list',
             data: {
@@ -62,12 +71,18 @@ Page({
                 that.setData({
                     chineseWomen: res.data.artists
                 })
+            },
+            complete() {
+                wx.hideLoading()
             }
         })
     },
     // 欧美男歌手
     westernMen(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/artist/list',
             data: {
@@ -80,12 +95,18 @@ Page({
                 that.setData({
                     westernMen: res.data.artists
                 })
+            },
+            complete() {
+                wx.hideLoading()
             }
         })
     },
     // 欧美女歌手
     westernWomen(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/artist/list',
             data: {
@@ -99,6 +120,9 @@ Page({
                 that.setData({
                     westernWomen: res.data.artists
                 })
+            },
+            complete() {
+                wx.hideLoading()
             }
         })
     },

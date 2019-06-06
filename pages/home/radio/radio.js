@@ -10,6 +10,9 @@ Page({
     // 电台推荐
     radio(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/dj/recommend',
             header: {
@@ -20,6 +23,7 @@ Page({
                 that.setData({
                     djRadios: res.data.djRadios
                 })
+                wx.hideLoading()
             }
         })
     },

@@ -74,6 +74,9 @@ Page({
     // 最新mv
     newMv(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/mv/first',
             data: {
@@ -88,6 +91,9 @@ Page({
                     newMv: res.data.data
                 })
                 that.getPlayCount()
+            },
+            complete() {
+                wx.hideLoading()
             }
         })
     },
@@ -101,6 +107,9 @@ Page({
     // 推荐mv
     recommendMv(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/personalized/mv',
             header: {
@@ -112,6 +121,9 @@ Page({
                     recommendMv: res.data.result
                 })
                 that.getPlayTime()
+            },
+            complete() {
+                wx.hideLoading()
             }
         })
     },
@@ -152,6 +164,9 @@ Page({
     // mv排行
     rankingMv(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/top/mv',
             data:{
@@ -165,6 +180,7 @@ Page({
                 that.setData({
                     rankingMv: res.data.data
                 })
+                wx.hideLoading()
             }
         })
     },
@@ -200,6 +216,9 @@ Page({
     // 新碟上架
     newAlbum() {
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/top/album',
             data: {
@@ -212,6 +231,9 @@ Page({
                 that.setData({
                     albums: res.data.albums
                 })
+            },
+            complete() {
+                wx.hideLoading()
             }
         })
     },

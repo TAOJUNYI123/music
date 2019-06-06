@@ -207,16 +207,15 @@
     bottom: 56px;
 }
 
-.newMvBox .briefDesc {
+/* .newMvBox .briefDesc {
     display: flex;
     align-items: center;
     width: 80%;
     height: 40px;
     margin-top: 5px;
     padding: 5px;
-    /* background-color: yellow; */
     border-bottom: 1px solid #edece8;
-}
+} */
 
 .rankingBox {
     width: 100%;
@@ -269,7 +268,7 @@
 }
 
 .briefDesc {
-    width: 90%;
+    width: 80%;
     margin-top: 8px;
     overflow: hidden;
     text-overflow: ellipsis;

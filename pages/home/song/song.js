@@ -127,6 +127,18 @@ Page({
             })
         })
     },
+    // 停止播放
+    stopMusic(){
+        innerAudioContext.src = this.data.url;
+        innerAudioContext.stop();
+        const that = this;
+        innerAudioContext.onPause(() => {
+            console.log('停止播放')
+            that.setData({
+                start: false
+            })
+        })
+    },
     // 进度条改变
     onChange(event) {
         // console.log(event.detail)
@@ -216,14 +228,14 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function() {
-
+        this.stopMusic()
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+        this.stopMusic()
     },
 
     /**

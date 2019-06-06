@@ -43,6 +43,9 @@ Page({
     // 获取单曲
     getSongs(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/search',
             data: {
@@ -53,16 +56,20 @@ Page({
                 'content-type': 'application/json'
             },
             success(res) {
-                console.log(res.data.result.songs);
+                // console.log(res.data.result.songs);
                 that.setData({
                     songs: res.data.result.songs
                 })
+                wx.hideLoading()
             }
         })
     },
     // 获取专辑
     getAlbum(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/search',
             data: {
@@ -78,12 +85,16 @@ Page({
                     albums: res.data.result.albums
                 })
                 that.publishTime();
+                wx.hideLoading()
             }
         })
     },
     // 获取歌手
     getSinger(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/search',
             data: {
@@ -98,12 +109,16 @@ Page({
                 that.setData({
                     artists: res.data.result.artists
                 })
+                wx.hideLoading()
             }
         })
     },
     // 获取电台
     getRadio(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/search',
             data: {
@@ -118,13 +133,16 @@ Page({
                 that.setData({
                     djRadios: res.data.result.djRadios
                 })
-
+                wx.hideLoading()
             }
         })
     },
     // 获取视频
     getVideo(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/search',
             data: {
@@ -141,7 +159,15 @@ Page({
                 })
                 that.formatDuring();
                 that.getPlayTime();
+                wx.hideLoading()
             }
+        })
+    },
+    // 跳转到视频播放页面
+    newMv(e){
+        // console.log(e)
+        wx.navigateTo({
+            url: '../video/video?id=' + e.currentTarget.id + '&name=' + e.currentTarget.dataset.name
         })
     },
     // 发布时间

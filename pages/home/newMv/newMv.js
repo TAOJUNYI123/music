@@ -11,6 +11,9 @@ Page({
     // 获取视频地址
     mvUrl(){
         const that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
         wx.request({
             url: 'http://192.168.43.54:3000/mv/url',
             data: {
@@ -21,9 +24,25 @@ Page({
             },
             success(res) {
                 // console.log(res.data.data.url)
-                that.setData({
-                    url: res.data.data.url
-                })
+                if (res.data.data.url){
+                    that.setData({
+                        url: res.data.data.url
+                    })
+                    wx.hideLoading()
+                }else{
+                    wx.showModal({
+                        title: '温馨提示',
+                        content: '没有获取到相关视频哦~',
+                        showCancel: false,
+                        success(res) {
+                            if (res.confirm) {
+                                wx.navigateBack({
+                                    delta: 1
+                                })
+                            }
+                        }
+                    })
+                }
             }
         })
     },
